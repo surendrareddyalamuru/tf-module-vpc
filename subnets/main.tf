@@ -5,4 +5,5 @@ module "lm-subnets" {
   source = "./lm-subnets"
   name = each.value.name
   vpc_id = var.vpc_id[0]
+  subnet_availability_zones = var.subnet_availability_zones
 }
