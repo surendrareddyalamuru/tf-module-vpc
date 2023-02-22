@@ -1,6 +1,5 @@
 module "lm-subnets" {
   for_each = var.subnets
-  subnets = each.value.subnets
   cidr_block = each.value.cidr_block
   env = var.env
   source = "./lm-subnets"
