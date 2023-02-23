@@ -18,3 +18,10 @@ resource "aws_route_table" "aws_route-table" {
     PROJECT = "roboshop"
   }
 }
+
+resource "aws_route" "peering_connection_route" {
+  for_each = var.subnets
+  route_table_id            = lookup(lookup(aws_route_table.aws_route-table, each.value.name, null), "id" , null)
+  destination_cidr_block    = lookup(var.management_vpc, "vpc_cidr", null)
+  vpc_peering_connection_id = var.peering_connection_id
+}
