@@ -14,7 +14,7 @@ resource "aws_eip" "ngw" {
 resource "aws_nat_gateway" "ngw" {
   count = length(local.vpc_ids)
   allocation_id = aws_eip.ngw.id
-  subnet_id     = local.public_subnets_list[0]
+  subnet_id     = local.private_subnets_list[0]
 
   tags = {
     Name = "NAT Gw"
