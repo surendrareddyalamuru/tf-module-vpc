@@ -15,7 +15,7 @@ module "lm-subnets" {
 #
 #output "subnetz-list" {
 #  value = local.subnets_list[*].id
-}
+#}
 
 resource "aws_route_table" "aws_route-table" {
   for_each = var.subnets
