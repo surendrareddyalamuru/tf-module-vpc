@@ -1,5 +1,5 @@
 module "public_subnets" {
-  for_each = var.vpc
+  for_each = var.public_subnets
   subnets = each.value.public_subnets
   source = "./subnets"
   vpc_id = [ for k, v in aws_vpc.main : v.id ]
@@ -11,7 +11,7 @@ module "public_subnets" {
 }
 
 module "private_subnets" {
-  for_each = var.vpc
+  for_each = var.private_subnets
   subnets = each.value.private_subnets
   source = "./subnets"
   vpc_id = [ for k, v in aws_vpc.main : v.id ]
