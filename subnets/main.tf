@@ -21,8 +21,14 @@ module "lm-subnets" {
 #  value = module.lm-subnets
 #}
 
-output "route_tables" {
-  value = aws_route_table.aws_route-table
+#output "route_tables" {
+#  value = aws_route_table.aws_route-table
+#}
+
+output "rt" {
+  value = {
+  for k, v in aws_route_table.aws_route-table : k => v.id
+  }
 }
 
 resource "aws_route_table" "aws_route-table" {
