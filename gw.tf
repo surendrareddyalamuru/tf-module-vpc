@@ -1,15 +1,15 @@
-#resource "aws_internet_gateway" "gw" {
-#  count = length(local.vpc_ids)
-#  vpc_id = element(local.vpc_ids, count.index)
-#
-#  tags = {
-#    Name = "${var.env}-igw"
-#  }
-#}
-#
-#resource "aws_eip" "ngw" {
-#  vpc      = true
-#}
+resource "aws_internet_gateway" "gw" {
+  count = length(local.vpc_ids)
+  vpc_id = element(local.vpc_ids, count.index)
+
+  tags = {
+    Name = "${var.env}-igw"
+  }
+}
+
+resource "aws_eip" "ngw" {
+  vpc      = true
+}
 #
 #resource "aws_nat_gateway" "ngw" {
 #  count = length(local.vpc_ids)
@@ -41,3 +41,11 @@
 #  destination_cidr_block    = "0.0.0.0/0"
 #  gateway_id = aws_nat_gateway.ngw[0].id
 #}
+
+locals {
+  private_route_tables = [for i, j in module.private_subnets : j.rt]
+}
+
+output "test" {
+  value = local.private_route_tables
+}
