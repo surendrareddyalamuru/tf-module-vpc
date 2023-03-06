@@ -17,7 +17,7 @@ module "lm-subnets" {
 #  value = local.subnets_list[*].id
 #}
 
-output "subnets" {
+output "subnetss" {
   value = module.lm-subnets
 }
 
