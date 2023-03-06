@@ -17,13 +17,13 @@ output "subnets-list" {
   value = local.subnets_list[*].id
 }
 
-#output "subnetss" {
-#  value = module.lm-subnets
-#}
+output "subnetss" {
+  value = module.lm-subnets
+}
 
-#output "route_tables" {
-#  value = aws_route_table.aws_route-table
-#}
+output "route_tables" {
+  value = aws_route_table.aws_route-table
+}
 
 output "rt" {
   value = [ for i, j in aws_route_table.aws_route-table : j.id ]
