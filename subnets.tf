@@ -22,11 +22,11 @@ module "private_subnets" {
 #  gateway_id                = aws_nat_gateway.ngw.id
 }
 
-output "public_subnets" {
-  value = "module.public_subnets"
-}
+#output "public_subnets" {
+#  value = "module.public_subnets"
+#}
 
 
 output "private_subnets" {
-  value = "module.private_subnets"
+  value = module.private_subnets
 }
