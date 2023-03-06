@@ -25,7 +25,7 @@ locals {
   private_route_tables = flatten([for i, j in module.private_subnets : j.rt])
   public_route_tables  = flatten([for i, j in module.public_subnets : j.rt])
   private_subnets_list = flatten([for i, j in module.private_subnets : j.subnets_list])
-  public_subnets_list  = flatten([for i, j in module.public_subnets : j.subnets_list])
+  public_subnets_list = flatten([for i, j in module.public_subnets : j.subnets_list])
 }
 
 resource "aws_route" "internet_gateway_route_to_public_subnets" {
