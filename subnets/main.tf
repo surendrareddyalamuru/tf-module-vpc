@@ -9,13 +9,13 @@ module "lm-subnets" {
   route_table_id = lookup(lookup(aws_route_table.aws_route-table, each.value.name, null), "id" , null)
 }
 
-#locals {
-#  subnets_list = flatten([for i, j in module.lm-subnets : j.subnets])
-#}
-#
-#output "subnetz-list" {
-#  value = local.subnets_list[*].id
-#}
+locals {
+  subnets_list = flatten([for i, j in module.lm-subnets : j.subnets])
+}
+
+output "subnets-list" {
+  value = local.subnets_list[*].id
+}
 
 resource "aws_route_table" "aws_route-table" {
   for_each = var.subnets
