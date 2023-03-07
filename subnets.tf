@@ -22,11 +22,3 @@ module "private_subnets" {
   internet_gateway_id                = aws_nat_gateway.ngw.*.id[0]
 }
 
-output "public_subnets" {
-  value = module.public_subnets
-}
-
-
-output "private_subnets" {
-  value = module.private_subnets
-}

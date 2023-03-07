@@ -9,28 +9,10 @@ module "lm-subnets" {
   route_table_id = lookup(lookup(aws_route_table.aws_route-table, each.value.name, null), "id" , null)
 }
 
-locals {
-  subnets_list = flatten([for i, j in module.lm-subnets : j.subnets])
-}
 
-output "subnets-list" {
-  value = local.subnets_list[*].id
-}
 
-output "subnetss" {
-  value = module.lm-subnets
-}
 
-output "route_tables" {
-  value = aws_route_table.aws_route-table
-}
 
-output "rt" {
-  value = [ for i, j in aws_route_table.aws_route-table : j.id ]
-#{
-#  for k, v in aws_route_table.aws_route-table : k => v.id
-#  }
-}
 
 resource "aws_route_table" "aws_route-table" {
   for_each = var.subnets
@@ -49,6 +31,6 @@ resource "aws_route" "peering_connection_route" {
   vpc_peering_connection_id = var.peering_connection_id
 }
 
-output "subnets" {
-  value = flatten([for i, j in module.lm-subnets: j.subnets])
-}
+#output "subnets" {
+#  value = flatten([for i, j in module.lm-subnets: j.subnets])
+#}
