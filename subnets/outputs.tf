@@ -17,3 +17,7 @@ output "rt" {
   #  for k, v in aws_route_table.aws_route-table : k => v.id
   #  }
 }
+
+output "subnets" {
+  value = flatten([for i, j in module.lm-subnets: j.subnets])
+}
