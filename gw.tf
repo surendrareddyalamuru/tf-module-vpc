@@ -42,10 +42,10 @@ resource "aws_route" "nat_gateway_route_to_private_subnets" {
   gateway_id = aws_nat_gateway.ngw[0].id
 }
 
-locals {
-  private_route_tables = flatten([for i, j in module.private_subnets : j.rt])
-}
-
-output "test" {
-  value = local.private_route_tables
-}
+#locals {
+#  private_route_tables = flatten([for i, j in module.private_subnets : j.rt])
+#}
+#
+#output "test" {
+#  value = local.private_route_tables
+#}
