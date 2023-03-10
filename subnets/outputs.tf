@@ -23,3 +23,7 @@
 #output "subnets" {
 #  value = flatten([for i, j in module.lm-subnets: j.subnets])
 #}
+
+output "subnets" {
+  value = aws_subnet.main
+}
