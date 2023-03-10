@@ -14,15 +14,7 @@
 #
 #
 #
-#resource "aws_route_table" "aws_route-table" {
-#  for_each = var.subnets
-#  vpc_id    = var.vpc_id[0]
-#  tags = {
-#    Name = "${var.env}-${each.value.name}-rt"
-#    ENV= var.env
-#    PROJECT = "roboshop"
-#  }
-#}
+
 #
 #resource "aws_route" "peering_connection_route" {
 #  for_each = var.subnets
@@ -37,6 +29,15 @@ resource "aws_subnet" "main" {
   cidr_block = element(var.cidr_block, count.index)
   tags = local.subnet_tags
   availability_zone = element(var.subnet_availability_zones, count.index)
+}
+
+resource "aws_route_table" "aws_route-table" {
+  vpc_id    = var.vpc_id
+  tags = {
+    Name = "${var.env}-${var.name}-rt"
+    ENV= var.env
+    PROJECT = "roboshop"
+  }
 }
 
 
