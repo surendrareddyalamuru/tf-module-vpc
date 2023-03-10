@@ -1,7 +1,5 @@
-variable "subnets" {}
-variable "env" {}
+variable "cidr_block" {}
 variable "vpc_id" {}
 variable "subnet_availability_zones" {}
-variable "peering_connection_id" {}
-variable "management_vpc" {}
-variable "internet_gateway_id" {}
+variable "name" {}
+variable "env" {}
